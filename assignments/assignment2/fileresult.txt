@@ -1,0 +1,28 @@
+$ make clean
+rm -f *.o
+rm -f writer
+
+$ make all
+aarch64-none-linux-gnu-gcc  -O2 -g -Wall   -c writer.c
+writer.c: In function ‘main’:
+writer.c:10:12: warning: implicit declaration of function ‘open’; did you mean ‘popen’? [-Wimplicit-function-declaration]
+   10 |  if ((fd = open(argv[1], "r")) == NULL)
+      |            ^~~~
+      |            popen
+writer.c:10:32: warning: comparison between pointer and integer
+   10 |  if ((fd = open(argv[1], "r")) == NULL)
+      |                                ^~
+aarch64-none-linux-gnu-gcc  -O2 -g -Wall   -o writer writer.o
+
+$ cat /var/log/syslog | grep -i assignment
+
+Aug 28 13:08:37 thinkpad COURSE 1 ASSIGNMENT 2: Writing AELD_IS_FUN to file /tmp/aeld-data/joag65581.txt
+Aug 28 13:08:37 thinkpad COURSE 1 ASSIGNMENT 2: Writing AELD_IS_FUN to file /tmp/aeld-data/joag65582.txt
+Aug 28 13:08:37 thinkpad COURSE 1 ASSIGNMENT 2: Writing AELD_IS_FUN to file /tmp/aeld-data/joag65583.txt
+Aug 28 13:08:37 thinkpad COURSE 1 ASSIGNMENT 2: Writing AELD_IS_FUN to file /tmp/aeld-data/joag65584.txt
+Aug 28 13:08:37 thinkpad COURSE 1 ASSIGNMENT 2: Writing AELD_IS_FUN to file /tmp/aeld-data/joag65585.txt
+Aug 28 13:08:37 thinkpad COURSE 1 ASSIGNMENT 2: Writing AELD_IS_FUN to file /tmp/aeld-data/joag65586.txt
+Aug 28 13:08:37 thinkpad COURSE 1 ASSIGNMENT 2: Writing AELD_IS_FUN to file /tmp/aeld-data/joag65587.txt
+Aug 28 13:08:37 thinkpad COURSE 1 ASSIGNMENT 2: Writing AELD_IS_FUN to file /tmp/aeld-data/joag65588.txt
+Aug 28 13:08:37 thinkpad COURSE 1 ASSIGNMENT 2: Writing AELD_IS_FUN to file /tmp/aeld-data/joag65589.txt
+Aug 28 13:08:37 thinkpad COURSE 1 ASSIGNMENT 2: Writing AELD_IS_FUN to file /tmp/aeld-data/joag655810.txt

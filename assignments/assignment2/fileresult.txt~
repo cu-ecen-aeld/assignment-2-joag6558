@@ -1,0 +1,16 @@
+$ make clean
+rm -f *.o
+rm -f writer
+
+$ make all
+aarch64-none-linux-gnu-gcc  -O2 -g -Wall   -c writer.c
+writer.c: In function ‘main’:
+writer.c:10:12: warning: implicit declaration of function ‘open’; did you mean ‘popen’? [-Wimplicit-function-declaration]
+   10 |  if ((fd = open(argv[1], "r")) == NULL)
+      |            ^~~~
+      |            popen
+writer.c:10:32: warning: comparison between pointer and integer
+   10 |  if ((fd = open(argv[1], "r")) == NULL)
+      |                                ^~
+aarch64-none-linux-gnu-gcc  -O2 -g -Wall   -o writer writer.o
+
